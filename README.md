@@ -165,7 +165,7 @@ checking for apt-ftparchive, and macOS (10.10+) users should be using Diatrus' [
 
 ### 4. (Optional) Adding your GPG Key (Soon to be Integrated)
 
-In order to add your GPG key, you're going to need `gnupg` (I'm unaware as of 8/2/2020, if this is available via Homebrew). Afterwards, open a Terminal and type the following: `gpg --gen-key` (if it asks you what kind of key you want, select `4 rsa sign only` and let it do its thing). **REMEMBER YOUR PASSWORD**. Make sure you're in the directory of your repo and type `sudo gpg --output keyFile --armor --export Last8Lettersofyourkeyfingerprint`.
+In order to add your GPG key, you're going to need `gnupg` (I'm unaware as of 8/2/2020, if this is available via Homebrew). Afterwards, open a Terminal and type the following: `gpg --gen-key` (if it asks you what kind of key you want, select `4 rsa sign only` 4096 instead of 3072, let it do its thing). **REMEMBER YOUR PASSWORD**. Make sure you're in the directory of your repo and type `sudo gpg --output keyFile --armor --export Last8Lettersofyourkeyfingerprint`.
 If you cant find your key fingerprint type `gpg --list-keys` and copy and paste the last 8 letters of the text under pub.
 Now run `update-repo.sh` and then type `gpg -abs -o Release.gpg Release` and enter your password from your gpg key from earlier and then you should be good to go. Now in order for users to add the key they must go into a terminal and type `wget -O - https://yourreponame.com/keyfile | sudo apt-key add -` then `apt-get update` and you're good to go!
 
