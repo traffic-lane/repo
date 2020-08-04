@@ -24,7 +24,6 @@ You **must** have apt-ftparchive on your operating system to utilize repo.me. Th
 You **must** have `wget, zstd, xz, bzip2, & gzip` installed on macOS. Don't worry, the script will automatically check for homebrew installation and dependencies, if not found,
 installation for all of the dependencies and homebrew will starts.</br>
 
-
 ### 2. Download / Fork repo.me
 
 If you are _not_ hosting your repo on [GitHub Pages](https://pages.github.com/), you can download the zip file [here](https://github.com/syns/repo.me/archive/master.zip) and extract to a subfolder on your website.
@@ -164,11 +163,11 @@ SileoDepiction: https://username.github.io/repo/depictions/native/me.syns.sample
 The `Packages` file is handled by `updaterepo.sh`. Windows users should be using WSL (I use Debian), Linux users should be
 checking for apt-ftparchive, and macOS (10.10+) users should be using Diatrus' [recompiled version of apt-ftparchive](https://apt.procurs.us/apt-ftparchive) (this is now automatically downloaded via `updaterepo.sh` and perms will automatically be set for apt-ftparchive to work on macOS). macOS users will be asked for their password when running this, this is due to `sudo`, the perms are transmuted after apt-ftparchive is automatically pulled via wget, but not without you entering your password.
 
-### 4. (Optional) Adding your GPG Key
+### 4. (Optional) Adding your GPG Key (Soon to be Integrated)
 
 In order to add your GPG key, you're going to need `gnupg` (I'm unaware as of 8/2/2020, if this is available via Homebrew). Afterwards, open a Terminal and type the following: `gpg --gen-key` (if it asks you what kind of key you want, select `4 rsa sign only` and let it do its thing). **REMEMBER YOUR PASSWORD**. Make sure you're in the directory of your repo and type `sudo gpg --output keyFile --armor --export Last8Lettersofyourkeyfingerprint`.
 If you cant find your key fingerprint type `gpg --list-keys` and copy and paste the last 8 letters of the text under pub.
-Now type `gpg -abs -o Release.gpg Release` and enter your password from your gpg key from earlier. Now run `update-repo.sh` and you should be good to go. Now in order for users to add the key they must go into a terminal and type `wget -O - https://yourreponame.com/keyfile | sudo apt-key add -` then `apt-get update` and you're good to go!
+Now run `update-repo.sh` and then type `gpg -abs -o Release.gpg Release` and enter your password from your gpg key from earlier and then you should be good to go. Now in order for users to add the key they must go into a terminal and type `wget -O - https://yourreponame.com/keyfile | sudo apt-key add -` then `apt-get update` and you're good to go!
 
 #### 5. Repository at last!
 
